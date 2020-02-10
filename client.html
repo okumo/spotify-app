@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Streaming de Oscar</title>
+</head>
+<body>
+    <header><h1>VIDEO STREAM DE OSCAR</h1></header>
+    <img src="">
+    <script>
+        const img = document.querySelector('img');
+        const WS_URL= 'ws://localhost:3001';
+        const ws= new WebSocket(WS_URL);
+        ws.onopen = () => console.log(`Connected to ${WS_URL}, client.html`);
+        ws.onmessage = message => {
+            // set the base64 string to the src tag of the image
+            img.src = message.data;
+        }
+    </script>
+</body>
+</html>
